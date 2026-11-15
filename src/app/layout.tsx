@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ADSENSE_CLIENT } from "@/lib/adsense";
 import { CODELOVE_NETWORK, CREATOR_NAME, CREATOR_URL, MAIN_SITE_URL, OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
+
+// Self-hosted at build time: no render-blocking request to fonts.googleapis.com before the first paint.
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 const TITLE = "Insta Downloader — Save Reels, Video & Photos Free";
 const DESCRIPTION = "Free Insta Downloader: save Instagram Reels, videos & photos in HD with no watermark and no login on iPhone, Android and PC — Pinterest too.";
@@ -118,11 +122,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth ${inter.variable}`} suppressHydrationWarning>
       <head>
         <link rel="sitemap" type="application/xml" href="https://downloader.codelove.in/sitemap.xml" />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         {/* Google AdSense - only rendered once a publisher ID is set in src/lib/adsense.ts */}
         {ADSENSE_CLIENT ? (
           <>
@@ -155,8 +157,9 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* CodeLove Analytics (admin.codelove.in) */}
-        <script defer src="https://admin.codelove.in/t.js" />
+        {/* CodeLove Analytics (admin.codelove.in). async, not defer: React treats <script async src> as a resource and
+            skips it during hydration; a defer script gets compared with the script AdSense inserts into <head>. */}
+        <script async src="https://admin.codelove.in/t.js" />
       </head>
       <body
         className="antialiased min-h-screen text-neutral-900 dark:text-neutral-50 bg-neutral-50 dark:bg-black transition-colors duration-300"

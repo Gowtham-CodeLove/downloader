@@ -19,7 +19,7 @@
   --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
   --shadow-premium-dark: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
   
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: monospace;
 
   /* Footer HeartButton: hearts burst outwards from the heart. */

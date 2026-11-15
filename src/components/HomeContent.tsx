@@ -129,22 +129,7 @@ const DEVICES = [
   },
 ];
 
-const howToJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'How to download Instagram Reels, videos and photos',
-  description: 'Save a public Instagram Reel, video or photo to your phone or computer with Insta Downloader.',
-  totalTime: 'PT1M',
-  tool: [{ '@type': 'HowToTool', name: 'Insta Downloader' }],
-  step: HOW_TO.map((step, i) => ({
-    '@type': 'HowToStep',
-    position: i + 1,
-    name: step.title,
-    text: step.text,
-    url: `${SITE_URL}/#how-it-works`,
-  })),
-};
-
+// No HowTo markup: Google removed HowTo rich results in 2023. The steps stay visible on the page.
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -176,7 +161,7 @@ export default function HomeContent() {
   return (
     <div className="min-h-screen flex flex-col selection:bg-instagram-pink/20">
       <Header />
-      {[howToJsonLd, faqJsonLd, appJsonLd].map((data) => (
+      {[faqJsonLd, appJsonLd].map((data) => (
         <script key={data['@type']} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
       ))}
 
