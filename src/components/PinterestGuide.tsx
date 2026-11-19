@@ -54,10 +54,81 @@ const TIPS_IMAGE = [
   },
 ];
 
+// Step-by-step and questions per mode, so the video and image pages each carry their own text.
+const STEPS_VIDEO = [
+  'In the Pinterest app, open the video Pin, tap Share (or the ⋯ menu) and choose Copy link. On a computer, copy the address of the Pin page — it looks like pinterest.com/pin/….',
+  'Paste the link into the box above and press Fetch Videos. The clip opens in a preview so you can check it is the right one.',
+  'Press Download to save it as an MP4 file. On iPhone it lands in Files → Downloads, on Android in the Downloads folder, and on a computer in your usual downloads folder.',
+];
+
+const STEPS_IMAGE = [
+  'Open the image Pin in the Pinterest app or website, tap Share → Copy link, or copy the pinterest.com/pin/… address from the browser bar.',
+  'Paste the link into the box above and press Fetch Images. The full picture appears so you can see exactly what will be saved.',
+  'Press Download. The tool asks Pinterest for the original upload rather than the smaller preview shown in the feed, so you get the full, uncropped image.',
+];
+
+const FAQ_VIDEO = [
+  {
+    question: 'Why does it say no video was found?',
+    answer:
+      'Either the Pin is an image Pin — use the Pinterest Image Downloader for those — or the video is not stored on Pinterest at all. Some Pins only show a video from another site, such as YouTube; there is no Pinterest video file to save in that case.',
+  },
+  {
+    question: 'What quality are Pinterest videos saved in?',
+    answer:
+      'Pinterest re-encodes every video it hosts, and most video Pins are kept at 720p. The tool picks the HD version when the Pin has one. It cannot be sharper than what was uploaded.',
+  },
+  {
+    question: 'Do pin.it short links work?',
+    answer:
+      'Yes. Links shared from the Pinterest app often look like pin.it/abc123. They are followed to the full Pin automatically, so paste them as they are.',
+  },
+  {
+    question: 'Can I download a whole board?',
+    answer:
+      'No. Each link has to be a single Pin. To save several clips, open the Multiple Links tab and paste one Pin link per box.',
+  },
+  {
+    question: 'Can I re-upload a Pinterest video I downloaded?',
+    answer:
+      'Only with permission. A Pin is often a re-share, so the account that pinned it is not always the creator. Follow the Pin’s source link to find who made it, and ask them before posting the video elsewhere.',
+  },
+];
+
+const FAQ_IMAGE = [
+  {
+    question: 'Is the downloaded image the full size?',
+    answer:
+      'Yes. The feed shows a resized preview (usually 736 pixels wide). The tool fetches the original file that was uploaded to Pinterest, so the download is the largest version available.',
+  },
+  {
+    question: 'Why does it say no image was found?',
+    answer:
+      'The Pin may be a video Pin — use the Pinterest Video Downloader for those — or it may have been deleted or saved to a secret board. Only public Pins can be fetched.',
+  },
+  {
+    question: 'Do pin.it short links work?',
+    answer:
+      'Yes. Short links shared from the Pinterest app are followed to the full Pin automatically.',
+  },
+  {
+    question: 'Can I save every image on a board?',
+    answer:
+      'No. Each link has to be a single Pin. For several pictures, open the Multiple Links tab and paste one Pin link per box.',
+  },
+  {
+    question: 'Can I use the images I download?',
+    answer:
+      'For personal reference, yes. For anything public or commercial you need the creator’s permission. Many Pins are re-shares, so check the Pin’s source link to find the original photographer or designer.',
+  },
+];
+
 export default function PinterestGuide({ mode }: PinterestGuideProps) {
   const isVideo = mode === 'video';
   const rows = isVideo ? PIN_FORMATS_VIDEO : PIN_FORMATS_IMAGE;
   const tips = isVideo ? TIPS_VIDEO : TIPS_IMAGE;
+  const steps = isVideo ? STEPS_VIDEO : STEPS_IMAGE;
+  const faqs = isVideo ? FAQ_VIDEO : FAQ_IMAGE;
 
   return (
     <section
@@ -108,6 +179,17 @@ export default function PinterestGuide({ mode }: PinterestGuideProps) {
 
       <div>
         <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+          {isVideo ? 'How to download a Pinterest video' : 'How to download a Pinterest image'}
+        </h2>
+        <ol className="mt-6 space-y-3 rounded-2xl border border-neutral-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-950 p-6 pl-10 list-decimal text-sm leading-relaxed text-neutral-600 dark:text-zinc-400 marker:font-bold marker:text-[#E60023]">
+          {steps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div>
+        <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
           {isVideo ? 'Tips for saving Pinterest videos' : 'Tips for saving Pinterest images'}
         </h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -121,6 +203,28 @@ export default function PinterestGuide({ mode }: PinterestGuideProps) {
                 {tip.text}
               </p>
             </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+          {isVideo ? 'Pinterest video downloader FAQ' : 'Pinterest image downloader FAQ'}
+        </h2>
+        <div className="mt-6 space-y-3">
+          {faqs.map((faq) => (
+            <details
+              key={faq.question}
+              className="group rounded-2xl border border-neutral-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-950 p-5 [&_summary::-webkit-details-marker]:hidden"
+            >
+              <summary className="flex items-center justify-between gap-4 cursor-pointer text-base font-bold text-neutral-900 dark:text-white">
+                {faq.question}
+                <span className="grid place-items-center shrink-0 w-7 h-7 rounded-full bg-neutral-100 dark:bg-zinc-900 text-neutral-500 transition-transform group-open:rotate-45" aria-hidden>
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-zinc-400">{faq.answer}</p>
+            </details>
           ))}
         </div>
         <p className="mt-6 text-sm text-neutral-600 dark:text-zinc-400">

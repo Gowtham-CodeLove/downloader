@@ -1,29 +1,13 @@
 import { Metadata } from 'next';
-import { pageMetadata, toolJsonLd } from '@/lib/site';
+import { pageMetadata } from '@/lib/site';
 
+// Multi-link tab of the Pinterest video downloader: same text as /pinterest/video, so its canonical points
+// there and it is left out of the sitemap.
 export const metadata: Metadata = pageMetadata({
-  title: "Pinterest Multi Video Downloader - Download Multiple Pinterest Videos",
-  description: "Best Pinterest Multi Video Downloader. Download multiple Pinterest videos, reels, and pins at once for free. Batch download high-quality Pinterest media easily.",
+  title: "Multiple Pinterest Videos Downloader",
+  description: "Paste several Pinterest video pin links at once and save each clip as MP4. The multi-link tab of the Pinterest video downloader.",
   path: "/pinterest/video/multi-url",
-  keywords: [
-    "pinterest multi video downloader",
-    "batch pinterest downloader",
-    "download multiple pinterest videos",
-    "pinterest mass downloader",
-    "pinterest video downloader free",
-    "bulk pinterest download",
-    "pinterest batch downloader"
-  ],
-});
-
-const jsonLd = toolJsonLd({
-  name: "Pinterest Multi Video Downloader",
-  description: "Best Pinterest Multi Video Downloader to download multiple high-quality Pinterest videos and reels for free.",
-  path: "/pinterest/video/multi-url",
-  crumbs: [
-    { name: "Pinterest Video Downloader", path: "/pinterest/video" },
-    { name: "Multiple Links", path: "/pinterest/video/multi-url" },
-  ],
+  canonicalPath: "/pinterest/video",
 });
 
 export default function PinterestMultiLayout({
@@ -31,13 +15,5 @@ export default function PinterestMultiLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {children}
-    </>
-  );
+  return children;
 }

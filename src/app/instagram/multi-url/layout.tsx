@@ -1,32 +1,13 @@
 import { Metadata } from 'next';
-import { pageMetadata, toolJsonLd } from '@/lib/site';
+import { pageMetadata } from '@/lib/site';
 
+// The multi-link tab renders the same page as /instagram (page.tsx re-exports it), so its canonical points
+// there and it is left out of the sitemap. Two URLs with the same content split signals and Google drops one.
 export const metadata: Metadata = pageMetadata({
-  title: "Free Multiple Instagram Video Downloader - Download Reels",
-  description: "Download multiple Instagram videos, Reels, and photos at once. Free multi-URL Instagram downloader without login.",
+  title: "Multiple Instagram Links Downloader",
+  description: "Paste several Instagram Reel or post links at once and download each one. The multi-link tab of the Instagram downloader.",
   path: "/instagram/multi-url",
-  keywords: [
-    "multiple instagram downloader",
-    "multi url instagram downloader",
-    "multiple instagram video download",
-    "download multiple instagram videos",
-    "batch instagram video download",
-    "bulk instagram downloader free",
-    "insta downloader",
-    "insta downloader free",
-    "instagram downloader",
-    "insta video downloader"
-  ],
-});
-
-const jsonLd = toolJsonLd({
-  name: "Multiple Instagram Video Downloader",
-  description: "Download multiple Instagram videos, Reels, and photos at once in bulk.",
-  path: "/instagram/multi-url",
-  crumbs: [
-    { name: "Instagram Downloader", path: "/instagram" },
-    { name: "Multiple Links", path: "/instagram/multi-url" },
-  ],
+  canonicalPath: "/instagram",
 });
 
 export default function MultipleInstagramLayout({
@@ -34,13 +15,5 @@ export default function MultipleInstagramLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {children}
-    </>
-  );
+  return children;
 }

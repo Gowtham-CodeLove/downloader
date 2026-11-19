@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/youtube", destination: "/", permanent: true },
       { source: "/youtube/:path*", destination: "/", permanent: true },
+      // /pinterest has no page of its own. A permanent (308) redirect instead of the old 307 from redirect().
+      { source: "/pinterest", destination: "/pinterest/video", permanent: true },
     ];
   },
   // async rewrites() {

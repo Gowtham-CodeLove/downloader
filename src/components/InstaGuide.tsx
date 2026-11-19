@@ -27,6 +27,44 @@ const TIPS = [
   },
 ];
 
+// What the tool does with a link, in order. Kept factual: it describes this site's own code path.
+const STEPS = [
+  'The link is checked first. It has to point to one post — the address contains /reel/, /reels/, /p/ or /tv/. Profile, Story and Highlight links are rejected straight away.',
+  'Our server asks Instagram for that public post, the same way a logged-out browser would. No Instagram account or password is used at any point.',
+  'The caption and the @username come from Instagram’s public post information and are shown next to the preview, so you can check it is the right post before saving.',
+  'When you press Download, the file is passed through to your device as instagram_video_….mp4 (or .jpg for a photo). We do not keep a copy of it or a list of the links you paste.',
+];
+
+// Questions about this tool page specifically. The general questions (is it free, iPhone/Android, legality)
+// live in the home page FAQ, so the two pages do not repeat each other.
+const QUESTIONS = [
+  {
+    question: 'Why do I get “Invalid Instagram Video or Reel URL”?',
+    answer:
+      'The link is not a post link. A link to a profile (instagram.com/username) or to a Story does not point to a single file. Open the Reel or post itself, tap Share → Copy link, and paste that.',
+  },
+  {
+    question: 'Can I download Stories, Highlights or a whole profile?',
+    answer:
+      'No. This tool only saves individual public posts: Reels, feed videos, former IGTV videos and photo posts. It does not download Stories, Highlights, live videos or every post of an account.',
+  },
+  {
+    question: 'A post has several slides. Which one is saved?',
+    answer:
+      'For a carousel post the first item is saved. If you need a later slide and the creator agrees, ask them for the original file — it will also be in better quality than any copy taken from Instagram.',
+  },
+  {
+    question: 'Why are the views and likes missing for some posts?',
+    answer:
+      'Instagram’s public post information includes the caption and the account name but often not the counts. When the numbers are not available they are hidden instead of showing a made-up value.',
+  },
+  {
+    question: 'Can I paste more than one link?',
+    answer:
+      'Yes. Open the Multiple Links tab and use one box per link, or paste several links into the single box separated by spaces or new lines. Each post is fetched separately, so one broken link does not stop the others.',
+  },
+];
+
 export default function InstaGuide() {
   return (
     <section className="max-w-4xl mx-auto px-4 mt-20 space-y-14 text-left" aria-labelledby="insta-guide">
@@ -73,6 +111,39 @@ export default function InstaGuide() {
               <h3 className="font-bold text-neutral-900 dark:text-white">{tip.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-zinc-400">{tip.text}</p>
             </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+          What happens after you paste a link
+        </h2>
+        <ol className="mt-6 space-y-3 rounded-2xl border border-neutral-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-950 p-6 pl-10 list-decimal text-sm leading-relaxed text-neutral-600 dark:text-zinc-400 marker:font-bold marker:text-instagram-pink">
+          {STEPS.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div>
+        <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+          Questions about the Instagram downloader
+        </h2>
+        <div className="mt-6 space-y-3">
+          {QUESTIONS.map((faq) => (
+            <details
+              key={faq.question}
+              className="group rounded-2xl border border-neutral-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-950 p-5 [&_summary::-webkit-details-marker]:hidden"
+            >
+              <summary className="flex items-center justify-between gap-4 cursor-pointer text-base font-bold text-neutral-900 dark:text-white">
+                {faq.question}
+                <span className="grid place-items-center shrink-0 w-7 h-7 rounded-full bg-neutral-100 dark:bg-zinc-900 text-neutral-500 transition-transform group-open:rotate-45" aria-hidden>
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-zinc-400">{faq.answer}</p>
+            </details>
           ))}
         </div>
         <p className="mt-6 text-sm text-neutral-600 dark:text-zinc-400">

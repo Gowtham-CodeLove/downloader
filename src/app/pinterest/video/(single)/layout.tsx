@@ -2,25 +2,14 @@ import { Metadata } from 'next';
 import { pageMetadata, toolJsonLd } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pinterest Video & Pin Downloader Free",
-  description: "Best Pinterest Downloader to download high-quality Pinterest videos, pins, and images for free. Download single or multiple Pinterest videos easily.",
+  title: "Pinterest Video Downloader — Save Video Pins as MP4",
+  description: "Paste a Pinterest video pin or pin.it link to preview the clip and save it as an MP4 file. Free, no watermark added, no Pinterest account needed.",
   path: "/pinterest/video",
-  keywords: [
-    "pinterest downloader",
-    "pinterest downloader free",
-    "pinterest video downloader",
-    "pin downloader",
-    "pinterest image downloader",
-    "download pinterest video",
-    "free pinterest video download",
-    "pinterest story downloader",
-    "pinterest gif downloader"
-  ],
 });
 
 const jsonLd = toolJsonLd({
-  name: "Pinterest Downloader",
-  description: "Best Pinterest Downloader to download high-quality Pinterest videos, pins, and images for free.",
+  name: "Pinterest Video Downloader",
+  description: "Online tool that saves public Pinterest video pins as MP4 files from a pasted pin link.",
   path: "/pinterest/video",
   crumbs: [{ name: "Pinterest Video Downloader", path: "/pinterest/video" }],
 });

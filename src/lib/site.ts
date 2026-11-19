@@ -44,18 +44,22 @@ interface PageMeta {
   description: string;
   /** Route path starting with "/", or "" for the home page. */
   path: string;
-  keywords?: string[];
+  /**
+   * Set only on a page that is a variant of another page (the multi-link tabs): its canonical then points to the
+   * main page so Google indexes one URL instead of two near-identical ones. Defaults to `path` (self-referencing).
+   */
+  canonicalPath?: string;
 }
 
-// Per-page metadata: self-referencing canonical plus complete Open Graph / Twitter tags.
+// Per-page metadata: canonical plus complete Open Graph / Twitter tags. No meta keywords: Google ignores them
+// and a long list reads as keyword stuffing to other engines.
 // A page that sets `openGraph` replaces the root layout's object, so everything is repeated here.
-export function pageMetadata({ title, description, path, keywords }: PageMeta): Metadata {
-  const url = `${SITE_URL}${path}`;
+export function pageMetadata({ title, description, path, canonicalPath }: PageMeta): Metadata {
+  const url = `${SITE_URL}${canonicalPath ?? path}`;
   const shareTitle = typeof title === 'string' ? title : title.absolute;
   return {
     title,
     description,
-    keywords,
     alternates: { canonical: url },
     openGraph: {
       type: 'website',

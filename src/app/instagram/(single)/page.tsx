@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft, ShieldCheck, Sparkles, Heart, Download, Eye, Copy, Check,
-  ExternalLink, Play, Pause, Archive
+  ExternalLink, Play, Pause, Archive, Layers
 } from 'lucide-react';
 import HeroSection from '@/components/HeroSection';
 import LoadingState from '@/components/LoadingState';
@@ -22,26 +22,6 @@ import {
 } from '@/data/mockProfiles';
 import { trackUserAction } from '@/lib/analytics';
 import { useUserLimits } from '@/lib/useUserLimits';
-
-// Custom Instagram SVG icon component
-const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-  </svg>
-);
 
 export default function InstagramPage() {
   const { isLoggedIn, isPremium, checkDailyLimit, incrementDailyLimit } = useUserLimits();
@@ -349,7 +329,7 @@ export default function InstagramPage() {
             {!activeUsername && !isLoading && (
               <motion.div
                 key="hero"
-                initial={{ opacity: 0, y: 15 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.4 }}
@@ -381,7 +361,7 @@ export default function InstagramPage() {
 
                   <div className="glass-card p-5 rounded-card border border-neutral-200/40 dark:border-neutral-800/20 text-center">
                     <div className="w-10 h-10 rounded-full bg-instagram-orange/10 text-instagram-orange flex items-center justify-center mx-auto mb-3">
-                      <Instagram className="w-5 h-5" />
+                      <Layers className="w-5 h-5" />
                     </div>
                     <h2 className="text-sm font-bold text-neutral-800 dark:text-neutral-200 mb-1">Multiple Links Extractor</h2>
                     <p className="text-xs text-neutral-500 dark:text-neutral-500 leading-relaxed">

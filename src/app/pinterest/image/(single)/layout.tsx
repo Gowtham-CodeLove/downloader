@@ -2,23 +2,14 @@ import { Metadata } from 'next';
 import { pageMetadata, toolJsonLd } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pinterest Image & Picture Downloader",
-  description: "Best Pinterest Image Downloader. Fast, free, and high-quality Pinterest photo and picture downloader. Save your favorite pins directly to your device.",
+  title: "Pinterest Image Downloader — Save Pins in Full Size",
+  description: "Paste a Pinterest pin or pin.it link to save the image in its original, uncropped size as JPG or PNG. Free, no Pinterest account needed.",
   path: "/pinterest/image",
-  keywords: [
-    "pinterest image downloader",
-    "pinterest photo downloader",
-    "download pinterest pictures",
-    "pinterest picture saver",
-    "free pinterest image download",
-    "save pin image",
-    "high quality pinterest download"
-  ],
 });
 
 const jsonLd = toolJsonLd({
   name: "Pinterest Image Downloader",
-  description: "Best Pinterest Image Downloader to download high-quality Pinterest pictures and photos for free.",
+  description: "Online tool that saves public Pinterest image pins in their original resolution from a pasted pin link.",
   path: "/pinterest/image",
   crumbs: [{ name: "Pinterest Image Downloader", path: "/pinterest/image" }],
 });

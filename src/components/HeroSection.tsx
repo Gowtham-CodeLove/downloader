@@ -79,9 +79,11 @@ export default function HeroSection({ onFetch, isLoading, error, isPremiumFeatur
 
   return (
     <div className="w-full max-w-4xl mx-auto text-center px-4 py-8 md:py-16">
+      {/* initial={false} on the hero: the server HTML must show the heading and text, not style="opacity:0"
+          that only a JavaScript animation removes (crawlers and slow phones would see an empty page). */}
       {/* Sparkle Badge */}
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-6 border ${isPinterest
@@ -95,7 +97,7 @@ export default function HeroSection({ onFetch, isLoading, error, isPremiumFeatur
 
       {/* Hero Headings */}
       <motion.h1
-        initial={{ opacity: 0, y: -10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className="text-4xl md:text-6xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6"
@@ -109,7 +111,7 @@ export default function HeroSection({ onFetch, isLoading, error, isPremiumFeatur
       </motion.h1>
 
       <motion.p
-        initial={{ opacity: 0, y: 10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
@@ -130,7 +132,7 @@ export default function HeroSection({ onFetch, isLoading, error, isPremiumFeatur
 
       {/* Input card */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={false}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         className="glass-panel w-full max-w-2xl mx-auto p-5 rounded-outer shadow-premium dark:shadow-premium-dark border border-neutral-200/50 dark:border-neutral-800/30 bg-white dark:bg-zinc-950"
