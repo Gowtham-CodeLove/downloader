@@ -8,8 +8,8 @@ import { CODELOVE_NETWORK, CREATOR_NAME, CREATOR_URL, MAIN_SITE_URL, OG_IMAGE, S
 // Self-hosted at build time: no render-blocking request to fonts.googleapis.com before the first paint.
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
-const TITLE = "Insta Downloader — Save Reels, Video & Photos Free";
-const DESCRIPTION = "Free Insta Downloader: save Instagram Reels, videos & photos in HD with no watermark and no login on iPhone, Android and PC — Pinterest too.";
+const TITLE = "Insta Downloader: Instagram Reels & Video Downloader";
+const DESCRIPTION = "Insta Downloader by CodeLove: a free Instagram downloader for Reels, videos and photos. No login, no watermark added. Pinterest videos and images too.";
 
 // Defaults only. Each page sets its own title, description and canonical through pageMetadata().
 export const metadata: Metadata = {

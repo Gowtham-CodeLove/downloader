@@ -13,7 +13,12 @@ export const FAQS = [
   {
     question: 'What is Insta Downloader?',
     answer:
-      'Insta Downloader is a free online tool that saves public Instagram Reels, videos and photos to your phone or computer. You paste the link of a post, preview it, and download the original file in the best quality Instagram provides. There is no app to install and no account to create.',
+      'Insta Downloader (also called CodeLove Downloader) is a free online Instagram downloader that saves public Instagram Reels, videos and photos to your phone or computer. You paste the link of a post, preview it, and download the original file in the best quality Instagram provides. There is no app to install and no account to create. It is made by CodeLove and is not affiliated with Instagram, Meta or Pinterest.',
+  },
+  {
+    question: 'Is this a Reels downloader and a Pinterest downloader too?',
+    answer:
+      'Yes. The Instagram page works as a Reels downloader (Reels and videos save as MP4, photo posts as JPG). There is also a Pinterest video downloader that saves video pins as MP4, and a Pinterest image downloader that saves image pins in their full size. Short pin.it links work as well.',
   },
   {
     question: 'Is Insta Downloader free?',
@@ -46,9 +51,9 @@ export const FAQS = [
       'No. Only public posts can be downloaded. Content from private accounts, close-friends stories and age-restricted posts cannot be fetched, which protects people who chose not to share publicly.',
   },
   {
-    question: 'Can I download several Instagram videos at once?',
+    question: 'Is there a multi URL video downloader?',
     answer:
-      'Yes. The multi-link Insta Downloader lets you paste a list of post links, fetch them together and download each one, or save them all in one go.',
+      'Yes. The multi-link pages are a multi URL video downloader: paste a list of Instagram post links (or Pinterest video or image pin links), fetch them together, then download each one or save them all in one go.',
   },
   {
     question: 'Does the account owner know I downloaded their post?',
@@ -354,8 +359,8 @@ export default function HomeContent() {
               <div className={`${card} p-6`}>
                 <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-900 dark:text-white">Instagram tools</h3>
                 <ul className="mt-4 space-y-2">
-                  <ToolLink href="/instagram" title="Insta Downloader" text="Reels, videos & photos" />
-                  <ToolLink href="/instagram/multi-url" title="Multi-link downloader" text="Many posts at once" />
+                  <ToolLink href="/instagram" title="Instagram Reels Downloader" text="Reels, videos & photos" />
+                  <ToolLink href="/instagram/multi-url" title="Multi URL video downloader" text="Many posts at once" />
                 </ul>
               </div>
               <div className={`${card} p-6`}>

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { pageMetadata, toolJsonLd } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pinterest Video Downloader — Save Video Pins as MP4",
+  title: { absolute: "Pinterest Video Downloader — Save Video Pins as MP4" },
   description: "Paste a Pinterest video pin or pin.it link to preview the clip and save it as an MP4 file. Free, no watermark added, no Pinterest account needed.",
   path: "/pinterest/video",
 });

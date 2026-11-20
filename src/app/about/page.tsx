@@ -4,7 +4,7 @@ import { MAIN_SITE_URL, pageMetadata } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
   title: 'About Insta Downloader',
-  description: 'Insta Downloader is a free, no-sign-up tool for saving public Instagram videos and Reels and Pinterest videos and images. Learn what it does and who builds it.',
+  description: 'Insta Downloader by CodeLove is a free, no-sign-up tool for saving public Instagram Reels and Pinterest videos and images. What it does and who builds it.',
   path: '/about',
 });
 

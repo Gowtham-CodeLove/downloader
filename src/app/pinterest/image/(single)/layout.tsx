@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { pageMetadata, toolJsonLd } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pinterest Image Downloader — Save Pins in Full Size",
+  title: { absolute: "Pinterest Image Downloader — Save Pins in Full Size" },
   description: "Paste a Pinterest pin or pin.it link to save the image in its original, uncropped size as JPG or PNG. Free, no Pinterest account needed.",
   path: "/pinterest/image",
 });

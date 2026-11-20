@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { pageMetadata, toolJsonLd } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: "Instagram Reels & Video Downloader",
-  description: "Paste an Instagram Reel, video or photo link to preview and save it as MP4 or JPG. Which links work, what you get back, and fixes for links that fail.",
+  title: { absolute: "Instagram Reels Downloader — Download Instagram Video" },
+  description: "Reels downloader: paste an Instagram Reel, video or photo link to save it as MP4 or JPG. Which links work, what you get back, and fixes for failed links.",
   path: "/instagram",
 });
 
